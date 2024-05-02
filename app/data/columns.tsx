@@ -19,11 +19,11 @@ export const columns: IColumn[] = [
         key: 'currency'
     },
     {
-        title: 'Monto',
+        title: 'Balance',
         key: 'amount',
         styles: {
             fontWeight: 'bold',
-            color: (row) => row.amount < 0 ? 'red' : 'green'
+            color: (row) => row.amount < 0 ? '#f00' : 'green'
         },
         parse: (row) => row < 0 ? `-$${Math.abs(row)}` : `$${row}`,
         defaultValue: '0'
