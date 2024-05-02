@@ -7,21 +7,22 @@ export default function Home() {
 
   const styleRow = {
     '&:hover': {
-      backgroundColor: '#9f9f9f'
+      backgroundColor: '#eeeeee'
     },
   }
 
   const styleHeader = {
-    backgroundColor: '#000',
-    color: '#fff',
+    // backgroundColor: '#000',
+    color: '#000',
   }
 
   return (
     <main>
       <div
-        style={{ border: '1px solid #000', minHeight: '200px' }}
+        style={{ minHeight: '200px' }}
       >
         <CustomTable
+          checkbox={true}
           tableOptions={{ stickyHeader: true }}
           stylesRow={styleRow}
           stylesHeader={styleHeader}
