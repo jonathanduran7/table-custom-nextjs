@@ -8,11 +8,16 @@ import { IColumn } from "@/app/interface/column.interface"
 interface Props<T> {
     stylesRow?: IRow
     columns: IColumn[]
-    data: T[]
+    data: Array<T & {id: number}>
     tableOptions?: {
         stickyHeader?: boolean
     }
     checkbox?: boolean
+    checkboxFunctions?: {
+        isItemChecked: (id: number) => boolean
+        checks: { id: number, checked: boolean }[]
+        handleCheck: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean, id: number) => void
+    }
 }
 
 
@@ -24,7 +29,7 @@ const RowCustom = styled(TableRow)(({ theme }) => ({
 }));
 
 
-export default function TableBody<T>({ columns, data, stylesRow, checkbox }: Props<T>) {
+export default function TableBody<T>({ columns, data, stylesRow, checkbox, checkboxFunctions}: Props<T>) {
     return (
         <TableBodyMui>
             {data.map((row, index) => (
@@ -38,6 +43,8 @@ export default function TableBody<T>({ columns, data, stylesRow, checkbox }: Pro
                             <Checkbox
                                 color="primary"
                                 inputProps={{ 'aria-label': 'select all desserts' }}
+                                onChange={(event) => checkboxFunctions?.handleCheck(event, event.target.checked, row?.id)}
+                                checked={checkboxFunctions?.isItemChecked(row?.id)}
                             />
                         </TableCell>
                     }

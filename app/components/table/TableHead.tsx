@@ -6,9 +6,14 @@ interface Props {
     columns: IColumn[];
     stylesHeader?: IRow
     checkbox?: boolean
+    checkboxFunctions?: {
+        isItemChecked: (id: number) => boolean
+        initializeChecks: (data: { id: number }[]) => void
+        handleCheckAll: (checked: boolean) => void
+    }
 }
 
-export default function TableHead({ columns, stylesHeader, checkbox}: Props) {
+export default function TableHead({ columns, stylesHeader, checkbox, checkboxFunctions}: Props) {
     return (
         <HeadMui>
             <TableRow >
@@ -18,6 +23,7 @@ export default function TableHead({ columns, stylesHeader, checkbox}: Props) {
                         <Checkbox
                             color="primary"
                             inputProps={{ 'aria-label': 'select all desserts' }}
+                            onChange={(_, c) => checkboxFunctions?.handleCheckAll(c)}
                         />
                     </TableCell>
                 }

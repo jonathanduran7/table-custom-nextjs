@@ -1,6 +1,7 @@
 
 export const data = [
     {
+        id: 1,
         accountName: 'Cuenta de ahorros',
         accountType: 'Ahorros',
         currency: 'PEN',
@@ -10,6 +11,7 @@ export const data = [
         }
     },
     {
+        id: 2,
         accountName: 'Cuenta corriente',
         accountType: 'Corriente',
         currency: 'USD',
@@ -23,6 +25,7 @@ export const data = [
         }
     },
     {
+        id: 3,
         accountName: 'Cuenta corriente',
         accountType: 'Corriente',
         currency: 'USD',
@@ -36,6 +39,7 @@ export const data = [
         }
     },
     {
+        id: 4,
         accountName: 'Cuenta de ahorros',
         accountType: 'Ahorros',
         currency: 'PEN',
@@ -45,6 +49,7 @@ export const data = [
         }
     },
     {
+        id: 5,
         accountName: 'Cuenta corriente',
         accountType: 'Corriente',
         currency: 'USD',
@@ -58,6 +63,7 @@ export const data = [
         }
     },
     {
+        id: 6,
         accountName: 'Cuenta corriente',
         accountType: 'Corriente',
         currency: 'USD',
@@ -71,6 +77,7 @@ export const data = [
         }
     },
     {
+        id: 7,
         accountName: 'Cuenta de ahorros',
         accountType: 'Ahorros',
         currency: 'PEN',
@@ -80,6 +87,7 @@ export const data = [
         }
     },
     {
+        id: 8,
         accountName: 'Cuenta corriente',
         accountType: 'Corriente',
         currency: 'USD',
@@ -93,6 +101,7 @@ export const data = [
         }
     },
     {
+        id: 9,
         accountName: 'Cuenta corriente',
         accountType: 'Corriente',
         currency: 'USD',
@@ -106,6 +115,7 @@ export const data = [
         }
     },
     {
+        id: 10,
         accountName: 'Cuenta de ahorros',
         accountType: 'Ahorros',
         currency: 'PEN',
@@ -115,6 +125,7 @@ export const data = [
         }
     },
     {
+        id: 11,
         accountName: 'Cuenta corriente',
         accountType: 'Corriente',
         currency: 'USD',
@@ -127,122 +138,122 @@ export const data = [
             }
         }
     },
-    {
-        accountName: 'Cuenta corriente',
-        accountType: 'Corriente',
-        currency: 'USD',
-        amount: 2000,
-        user: {
-            name: 'John Doe',
-            email: '',
-            status: {
-                active: 'true'
-            }
-        }
-    },
-    {
-        accountName: 'Cuenta de ahorros',
-        accountType: 'Ahorros',
-        currency: 'PEN',
-        amount: 1000,
-        user: {
-            name: 'John Doe',
-        }
-    },
-    {
-        accountName: 'Cuenta corriente',
-        accountType: 'Corriente',
-        currency: 'USD',
-        amount: -400,
-        user: {
-            name: 'John Doe',
-            email: '',
-            status: {
-                active: 'true'
-            }
-        }
-    },
-    {
-        accountName: 'Cuenta corriente',
-        accountType: 'Corriente',
-        currency: 'USD',
-        amount: 2000,
-        user: {
-            name: 'John Doe',
-            email: '',
-            status: {
-                active: 'true'
-            }
-        }
-    },
-    {
-        accountName: 'Cuenta de ahorros',
-        accountType: 'Ahorros',
-        currency: 'PEN',
-        amount: 1000,
-        user: {
-            name: 'John Doe',
-        }
-    },
-    {
-        accountName: 'Cuenta corriente',
-        accountType: 'Corriente',
-        currency: 'USD',
-        amount: -400,
-        user: {
-            name: 'John Doe',
-            email: '',
-            status: {
-                active: 'true'
-            }
-        }
-    },
-    {
-        accountName: 'Cuenta corriente',
-        accountType: 'Corriente',
-        currency: 'USD',
-        amount: 2000,
-        user: {
-            name: 'John Doe',
-            email: '',
-            status: {
-                active: 'true'
-            }
-        }
-    },
-    {
-        accountName: 'Cuenta de ahorros',
-        accountType: 'Ahorros',
-        currency: 'PEN',
-        amount: 1000,
-        user: {
-            name: 'John Doe',
-        }
-    },
-    {
-        accountName: 'Cuenta corriente',
-        accountType: 'Corriente',
-        currency: 'USD',
-        amount: -400,
-        user: {
-            name: 'John Doe',
-            email: '',
-            status: {
-                active: 'true'
-            }
-        }
-    },
-    {
-        accountName: 'Cuenta corriente',
-        accountType: 'Corriente',
-        currency: 'USD',
-        amount: 2000,
-        user: {
-            name: 'John Doe',
-            email: '',
-            status: {
-                active: 'true'
-            }
-        }
-    },
+    // {
+    //     accountName: 'Cuenta corriente',
+    //     accountType: 'Corriente',
+    //     currency: 'USD',
+    //     amount: 2000,
+    //     user: {
+    //         name: 'John Doe',
+    //         email: '',
+    //         status: {
+    //             active: 'true'
+    //         }
+    //     }
+    // },
+    // {
+    //     accountName: 'Cuenta de ahorros',
+    //     accountType: 'Ahorros',
+    //     currency: 'PEN',
+    //     amount: 1000,
+    //     user: {
+    //         name: 'John Doe',
+    //     }
+    // },
+    // {
+    //     accountName: 'Cuenta corriente',
+    //     accountType: 'Corriente',
+    //     currency: 'USD',
+    //     amount: -400,
+    //     user: {
+    //         name: 'John Doe',
+    //         email: '',
+    //         status: {
+    //             active: 'true'
+    //         }
+    //     }
+    // },
+    // {
+    //     accountName: 'Cuenta corriente',
+    //     accountType: 'Corriente',
+    //     currency: 'USD',
+    //     amount: 2000,
+    //     user: {
+    //         name: 'John Doe',
+    //         email: '',
+    //         status: {
+    //             active: 'true'
+    //         }
+    //     }
+    // },
+    // {
+    //     accountName: 'Cuenta de ahorros',
+    //     accountType: 'Ahorros',
+    //     currency: 'PEN',
+    //     amount: 1000,
+    //     user: {
+    //         name: 'John Doe',
+    //     }
+    // },
+    // {
+    //     accountName: 'Cuenta corriente',
+    //     accountType: 'Corriente',
+    //     currency: 'USD',
+    //     amount: -400,
+    //     user: {
+    //         name: 'John Doe',
+    //         email: '',
+    //         status: {
+    //             active: 'true'
+    //         }
+    //     }
+    // },
+    // {
+    //     accountName: 'Cuenta corriente',
+    //     accountType: 'Corriente',
+    //     currency: 'USD',
+    //     amount: 2000,
+    //     user: {
+    //         name: 'John Doe',
+    //         email: '',
+    //         status: {
+    //             active: 'true'
+    //         }
+    //     }
+    // },
+    // {
+    //     accountName: 'Cuenta de ahorros',
+    //     accountType: 'Ahorros',
+    //     currency: 'PEN',
+    //     amount: 1000,
+    //     user: {
+    //         name: 'John Doe',
+    //     }
+    // },
+    // {
+    //     accountName: 'Cuenta corriente',
+    //     accountType: 'Corriente',
+    //     currency: 'USD',
+    //     amount: -400,
+    //     user: {
+    //         name: 'John Doe',
+    //         email: '',
+    //         status: {
+    //             active: 'true'
+    //         }
+    //     }
+    // },
+    // {
+    //     accountName: 'Cuenta corriente',
+    //     accountType: 'Corriente',
+    //     currency: 'USD',
+    //     amount: 2000,
+    //     user: {
+    //         name: 'John Doe',
+    //         email: '',
+    //         status: {
+    //             active: 'true'
+    //         }
+    //     }
+    // },
 ]
