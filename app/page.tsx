@@ -4,6 +4,7 @@ import CustomTable from "./components/table/Table";
 import { columns } from "./data/columns";
 import { data as fakeData } from "./data/data";
 import useChecks from "./hooks/useChecks";
+import TableCompound from "./components/compound/Table";
 
 export default function Home() {
 
@@ -17,20 +18,20 @@ export default function Home() {
   }
 
   const styleHeader = {
-    // backgroundColor: '#000',
+    backgroundColor: '#dcdcdc',
     color: '#000',
   }
 
   useEffect(() => {
     initializeChecks(data)
-  },[data])
+  }, [data])
 
   return (
     <main>
       <div
         style={{ minHeight: '200px' }}
       >
-        <CustomTable
+        {/* <CustomTable
           checkboxFunctions={{ isItemChecked, initializeChecks, checks, handleCheck, handleCheckAll}}
           checkbox={true}
           tableOptions={{ stickyHeader: true }}
@@ -38,7 +39,12 @@ export default function Home() {
           stylesHeader={styleHeader}
           columns={columns}
           data={data}
-        />
+        /> */}
+
+        <TableCompound columns={columns} data={data} hasCheckboxes={true}>
+          <TableCompound.Head stylesHeader={styleHeader} />
+          <TableCompound.Body stylesRow={styleRow} />
+        </TableCompound>
       </div>
     </main>
   );
