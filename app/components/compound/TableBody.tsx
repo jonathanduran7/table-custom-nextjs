@@ -4,6 +4,8 @@ import { TableCell, TableBody as TableBodyMui, styled, TableRow, Checkbox } from
 import { IRow } from "../table/Table"
 import { getCellStyle } from "@/app/utils/cell.utils"
 import { getRowStyle } from "@/app/utils/row.utils"
+import { useContext, useEffect } from "react"
+import CheckContext from "@/app/context/checks/check-context"
 
 interface Props<T> {
     stylesRow?: IRow
@@ -20,6 +22,12 @@ const RowCustom = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function TableBody<T>({ columns, data, stylesRow, hasCheckboxes }: Props<T>) {
+    const { initializeChecks, isItemChecked, handleCheck } = useContext(CheckContext);
+
+    useEffect(() => {
+        initializeChecks(data!);
+    }, [data])
+
     return (
         <TableBodyMui>
             {data?.map((row, index) => (
@@ -30,6 +38,8 @@ export default function TableBody<T>({ columns, data, stylesRow, hasCheckboxes }
                             <Checkbox
                                 color="primary"
                                 inputProps={{ 'aria-label': 'select all desserts' }}
+                                checked={isItemChecked(row.id)}
+                                onChange={(event) => handleCheck(event, event.target.checked, row.id)}
                             />
                         </TableCell>
                     }

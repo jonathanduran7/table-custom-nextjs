@@ -1,6 +1,8 @@
 import { IColumn } from "@/app/interface/column.interface";
 import { TableRow, TableHead as HeadMui, TableCell, Checkbox } from "@mui/material";
 import { IRow } from "../table/Table";
+import { useContext } from "react";
+import CheckContext from "@/app/context/checks/check-context";
 
 interface TableCompoundProps {
     columns?: IColumn[]
@@ -9,6 +11,9 @@ interface TableCompoundProps {
 }
 
 export function TableHead({ columns, hasCheckboxes, stylesHeader }: TableCompoundProps) {
+
+    const {handleCheckAll} = useContext(CheckContext)
+    
     return (
         <HeadMui>
             <TableRow >
@@ -18,6 +23,7 @@ export function TableHead({ columns, hasCheckboxes, stylesHeader }: TableCompoun
                         <Checkbox
                             color="primary"
                             inputProps={{ 'aria-label': 'select all desserts' }}
+                            onChange={(event) => handleCheckAll(event.target.checked)}
                         />
                     </TableCell>
                 }

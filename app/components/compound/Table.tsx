@@ -1,8 +1,11 @@
+'use client'
+
 import { IColumn } from "@/app/interface/column.interface"
 import TableBody from "./TableBody"
 import { TableHead } from "./TableHead"
 import React from "react"
-import { Checkbox, Table, TableCell } from "@mui/material"
+import { Table } from "@mui/material"
+import CheckProvider from "@/app/context/checks/check-provider"
 
 interface Props<T> {
     children: React.ReactNode
@@ -14,14 +17,16 @@ interface Props<T> {
 
 export default function TableCompound<T>({ children, tableOptions, ...restProps }: Props<T>) {
     return (
-        <Table {...tableOptions}>
-            {React.Children.map(children, child => {
-                if (React.isValidElement(child)) {
-                    return React.cloneElement(child, restProps);
-                }
-                return child;
-            })}
-        </Table>
+        <CheckProvider>
+            <Table {...tableOptions}>
+                {React.Children.map(children, child => {
+                    if (React.isValidElement(child)) {
+                        return React.cloneElement(child, restProps);
+                    }
+                    return child;
+                })}
+            </Table>
+        </CheckProvider>
     )
 }
 

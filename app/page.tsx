@@ -9,7 +9,7 @@ import TableCompound from "./components/compound/Table";
 export default function Home() {
 
   const [data, setData] = useState(fakeData)
-  const { checks, handleCheck, handleCheckAll, isItemChecked, initializeChecks } = useChecks();
+  // const { checks, handleCheck, handleCheckAll, isItemChecked, initializeChecks } = useChecks();
 
   const styleRow = {
     '&:hover': {
@@ -23,7 +23,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    initializeChecks(data)
+    // initializeChecks(data)
   }, [data])
 
   return (
