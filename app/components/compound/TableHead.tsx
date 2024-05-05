@@ -1,19 +1,40 @@
+import { useContext, useEffect, useState } from "react";
+import { TableRow, TableHead as HeadMui, TableCell, Checkbox, TableSortLabel } from "@mui/material";
 import { IColumn } from "@/app/interface/column.interface";
-import { TableRow, TableHead as HeadMui, TableCell, Checkbox } from "@mui/material";
 import { IRow } from "../table/Table";
-import { useContext } from "react";
 import CheckContext from "@/app/context/checks/check-context";
 
 interface TableCompoundProps {
     columns?: IColumn[]
     stylesHeader?: IRow
     hasCheckboxes?: boolean;
+    hasOrder?: boolean;
 }
 
-export function TableHead({ columns, hasCheckboxes, stylesHeader }: TableCompoundProps) {
+type Order = 'asc' | 'desc';
 
-    const {handleCheckAll} = useContext(CheckContext)
-    
+export function TableHead({ columns, hasCheckboxes, stylesHeader, hasOrder }: TableCompoundProps) {
+
+    const { handleCheckAll } = useContext(CheckContext);
+    const [ordersColumn, setOrderColumns] = useState<{ key: string, orderColumn: Order }[]>([]);
+
+    const changeOrder = (keyColumn: string) => {
+        const newOrderColumns = ordersColumn.map(orderColumn => {
+            if (orderColumn.key === keyColumn) {
+                return {
+                    key: orderColumn.key,
+                    orderColumn: orderColumn.orderColumn === 'asc' ? 'desc' : 'asc' as Order
+                }
+            }
+            return orderColumn;
+        });
+        setOrderColumns(newOrderColumns);
+    }
+
+    useEffect(() => {
+        setOrderColumns(columns?.map(column => { return { key: column.key, orderColumn: 'asc' } }) || []);
+    }, [columns])
+
     return (
         <HeadMui>
             <TableRow >
@@ -28,7 +49,18 @@ export function TableHead({ columns, hasCheckboxes, stylesHeader }: TableCompoun
                     </TableCell>
                 }
                 {columns?.map((column, index) => (
-                    <TableCell key={index} sx={stylesHeader}>{column.title}</TableCell>
+                    <TableCell
+                        key={index}
+                        sx={stylesHeader}
+                    >
+                        <TableSortLabel
+                            active={hasOrder}
+                            direction={ordersColumn.find(orderColumn => orderColumn.key === column.key)?.orderColumn || 'asc'}
+                            onClick={() => changeOrder(column.key)}
+                        >
+                            {column.title}
+                        </TableSortLabel>
+                    </TableCell>
                 ))}
             </TableRow>
 

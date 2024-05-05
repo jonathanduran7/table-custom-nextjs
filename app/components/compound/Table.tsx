@@ -13,6 +13,7 @@ interface Props<T> {
     data: Array<T & { id: number }>
     tableOptions?: { stickyHeader?: boolean }
     hasCheckboxes?: boolean;
+    hasOrder?: boolean;
 }
 
 export default function TableCompound<T>({ children, tableOptions, ...restProps }: Props<T>) {

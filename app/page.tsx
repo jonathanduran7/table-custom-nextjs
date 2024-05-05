@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <main>
       <div style={{ minHeight: '200px' }}>
-        <TableCompound columns={columns} data={data} hasCheckboxes={true}>
+        <TableCompound columns={columns} data={data} hasCheckboxes={true} hasOrder={true}>
           <TableCompound.Head stylesHeader={styleHeader} />
           <TableCompound.Body stylesRow={styleRow} />
         </TableCompound>
