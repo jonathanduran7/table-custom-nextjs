@@ -143,7 +143,7 @@ export const data = [
         accountName: 'Cuenta corriente',
         accountType: 'Corriente',
         currency: 'USD',
-        amount: 2000,
+        amount: 7600,
         user: {
             name: 'Lema Richard',
             email: '',
