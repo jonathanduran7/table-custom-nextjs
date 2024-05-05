@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { TableRow, TableHead as HeadMui, TableCell, Checkbox, TableSortLabel } from "@mui/material";
 import { IColumn } from "@/app/interface/column.interface";
 import { IRow } from "../table/Table";
@@ -19,11 +19,7 @@ export function TableHead({ columns, stylesHeader, deafultOrder, tableConfig }: 
 
     const { hasCheckboxes, hasOrder } = tableConfig || { hasCheckboxes: false, hasOrder: false };
     const { handleCheckAll } = useContext(CheckContext);
-    const { orderColumn, initialOrderColumns, ordersColumn } = useTableContext()
-
-    useEffect(() => {
-        initialOrderColumns(columns || []);
-    }, [columns])
+    const { handleOrderColumn, ordersColumn } = useTableContext()
 
     return (
         <HeadMui>
@@ -46,7 +42,7 @@ export function TableHead({ columns, stylesHeader, deafultOrder, tableConfig }: 
                         <TableSortLabel
                             active={hasOrder}
                             direction={ordersColumn.find(orderColumn => orderColumn.key === column.key)?.orderColumn || 'asc'}
-                            onClick={() => orderColumn(column.key)}
+                            onClick={() => handleOrderColumn(column.key)}
                         >
                             {column.title}
                         </TableSortLabel>

@@ -19,10 +19,10 @@ interface Props<T> {
 
 export default function TableCompound<T>({ children, tableOptions, ...restProps }: Props<T>) {
 
-    const { data } = restProps
+    const { data, columns } = restProps
 
     return (
-        <TableProvider initialData={data} >
+        <TableProvider initialData={data} columns={columns} >
             <CheckProvider>
                 <Table {...tableOptions}>
                     {React.Children.map(children, child => {
