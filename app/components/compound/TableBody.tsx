@@ -7,6 +7,7 @@ import { getRowStyle } from "@/app/utils/row.utils"
 import { useContext, useEffect } from "react"
 import CheckContext from "@/app/context/checks/check-context"
 import { TableConfig } from "@/app/interface/table-config.interface"
+import { TableContext } from "@/app/context/table/table-context"
 
 interface Props<T> {
     stylesRow?: IRow

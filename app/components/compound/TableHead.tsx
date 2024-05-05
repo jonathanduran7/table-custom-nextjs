@@ -4,6 +4,7 @@ import { IColumn } from "@/app/interface/column.interface";
 import { IRow } from "../table/Table";
 import CheckContext from "@/app/context/checks/check-context";
 import { TableConfig } from "@/app/interface/table-config.interface";
+import { useTableContext } from "@/app/hooks/useTableContext";
 
 interface TableCompoundProps {
     columns?: IColumn[]
@@ -18,23 +19,10 @@ export function TableHead({ columns, stylesHeader, deafultOrder, tableConfig }: 
 
     const { hasCheckboxes, hasOrder } = tableConfig || { hasCheckboxes: false, hasOrder: false };
     const { handleCheckAll } = useContext(CheckContext);
-    const [ordersColumn, setOrderColumns] = useState<{ key: string, orderColumn: Order }[]>([]);
-
-    const changeOrder = (keyColumn: string) => {
-        const newOrderColumns = ordersColumn.map(orderColumn => {
-            if (orderColumn.key === keyColumn) {
-                return {
-                    key: orderColumn.key,
-                    orderColumn: orderColumn.orderColumn === 'asc' ? 'desc' : 'asc' as Order
-                }
-            }
-            return orderColumn;
-        });
-        setOrderColumns(newOrderColumns);
-    }
+    const { orderColumn, initialOrderColumns, ordersColumn } = useTableContext()
 
     useEffect(() => {
-        setOrderColumns(columns?.map(column => { return { key: column.key, orderColumn: deafultOrder || 'asc' } }) || []);
+        initialOrderColumns(columns || []);
     }, [columns])
 
     return (
@@ -58,7 +46,7 @@ export function TableHead({ columns, stylesHeader, deafultOrder, tableConfig }: 
                         <TableSortLabel
                             active={hasOrder}
                             direction={ordersColumn.find(orderColumn => orderColumn.key === column.key)?.orderColumn || 'asc'}
-                            onClick={() => changeOrder(column.key)}
+                            onClick={() => orderColumn(column.key)}
                         >
                             {column.title}
                         </TableSortLabel>

@@ -7,6 +7,7 @@ import React from "react"
 import { Table } from "@mui/material"
 import CheckProvider from "@/app/context/checks/check-provider"
 import { TableConfig } from "@/app/interface/table-config.interface"
+import { TableProvider } from "@/app/context/table/table-provider"
 
 interface Props<T> {
     children: React.ReactNode
@@ -17,17 +18,22 @@ interface Props<T> {
 }
 
 export default function TableCompound<T>({ children, tableOptions, ...restProps }: Props<T>) {
+
+    const { data } = restProps
+
     return (
-        <CheckProvider>
-            <Table {...tableOptions}>
-                {React.Children.map(children, child => {
-                    if (React.isValidElement(child)) {
-                        return React.cloneElement(child, restProps);
-                    }
-                    return child;
-                })}
-            </Table>
-        </CheckProvider>
+        <TableProvider initialData={data} >
+            <CheckProvider>
+                <Table {...tableOptions}>
+                    {React.Children.map(children, child => {
+                        if (React.isValidElement(child)) {
+                            return React.cloneElement(child, { ...restProps });
+                        }
+                        return child;
+                    })}
+                </Table>
+            </CheckProvider>
+        </TableProvider>
     )
 }
 

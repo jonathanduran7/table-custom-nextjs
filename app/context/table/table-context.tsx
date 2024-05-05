@@ -1,9 +1,12 @@
-import { createContext } from "react";
+import { IColumn } from "@/app/interface/column.interface";
+import { Dispatch, SetStateAction, createContext } from "react";
 
-interface TableContextProps<T> {
-    data: Array<T & { id: number }>
-    setData: React.Dispatch<React.SetStateAction<Array<T & { id: number }>>>
+interface TableContextProps {
+    dataTable: any[]
+    setData: Dispatch<SetStateAction<any[]>>
     orderColumn: (column: string) => void
+    initialOrderColumns: (data: IColumn[]) => void
+    ordersColumn: { key: string, orderColumn: 'asc' | 'desc' }[]
 }
 
-export const TableContext = createContext<TableContextProps<unknown> | null>(null)
+export const TableContext = createContext<TableContextProps | null>(null)
