@@ -7,7 +7,7 @@ export const data = [
         currency: 'PEN',
         amount: 1000,
         user: {
-            name: 'John Doe',
+            name: 'Lema Richard',
         }
     },
     {
@@ -31,7 +31,7 @@ export const data = [
         currency: 'USD',
         amount: 2000,
         user: {
-            name: 'John Doe',
+            name: 'Lema Richard',
             email: '',
             status: {
                 active: 'true'
@@ -55,7 +55,7 @@ export const data = [
         currency: 'USD',
         amount: -400,
         user: {
-            name: 'John Doe',
+            name: 'Lema Richard',
             email: '',
             status: {
                 active: 'true'
@@ -107,7 +107,7 @@ export const data = [
         currency: 'USD',
         amount: 2000,
         user: {
-            name: 'John Doe',
+            name: 'Lema Richard',
             email: '',
             status: {
                 active: 'true'
@@ -145,7 +145,7 @@ export const data = [
         currency: 'USD',
         amount: 2000,
         user: {
-            name: 'John Doe',
+            name: 'Lema Richard',
             email: '',
             status: {
                 active: 'true'

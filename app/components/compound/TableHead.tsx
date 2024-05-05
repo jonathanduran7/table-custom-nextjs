@@ -9,11 +9,12 @@ interface TableCompoundProps {
     stylesHeader?: IRow
     hasCheckboxes?: boolean;
     hasOrder?: boolean;
+    deafultOrder?: Order;
 }
 
 type Order = 'asc' | 'desc';
 
-export function TableHead({ columns, hasCheckboxes, stylesHeader, hasOrder }: TableCompoundProps) {
+export function TableHead({ columns, hasCheckboxes, stylesHeader, hasOrder, deafultOrder }: TableCompoundProps) {
 
     const { handleCheckAll } = useContext(CheckContext);
     const [ordersColumn, setOrderColumns] = useState<{ key: string, orderColumn: Order }[]>([]);
@@ -32,7 +33,7 @@ export function TableHead({ columns, hasCheckboxes, stylesHeader, hasOrder }: Ta
     }
 
     useEffect(() => {
-        setOrderColumns(columns?.map(column => { return { key: column.key, orderColumn: 'asc' } }) || []);
+        setOrderColumns(columns?.map(column => { return { key: column.key, orderColumn: deafultOrder || 'asc' } }) || []);
     }, [columns])
 
     return (

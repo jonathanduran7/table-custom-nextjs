@@ -23,7 +23,7 @@ export default function Home() {
     <main>
       <div style={{ minHeight: '200px' }}>
         <TableCompound columns={columns} data={data} hasCheckboxes={true} hasOrder={true}>
-          <TableCompound.Head stylesHeader={styleHeader} />
+          <TableCompound.Head stylesHeader={styleHeader} deafultOrder="asc"/>
           <TableCompound.Body stylesRow={styleRow} />
         </TableCompound>
       </div>
