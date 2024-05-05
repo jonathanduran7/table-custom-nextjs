@@ -3,19 +3,20 @@ import { TableRow, TableHead as HeadMui, TableCell, Checkbox, TableSortLabel } f
 import { IColumn } from "@/app/interface/column.interface";
 import { IRow } from "../table/Table";
 import CheckContext from "@/app/context/checks/check-context";
+import { TableConfig } from "@/app/interface/table-config.interface";
 
 interface TableCompoundProps {
     columns?: IColumn[]
     stylesHeader?: IRow
-    hasCheckboxes?: boolean;
-    hasOrder?: boolean;
+    tableConfig?: TableConfig
     deafultOrder?: Order;
 }
 
 type Order = 'asc' | 'desc';
 
-export function TableHead({ columns, hasCheckboxes, stylesHeader, hasOrder, deafultOrder }: TableCompoundProps) {
+export function TableHead({ columns, stylesHeader, deafultOrder, tableConfig }: TableCompoundProps) {
 
+    const { hasCheckboxes, hasOrder } = tableConfig || { hasCheckboxes: false, hasOrder: false };
     const { handleCheckAll } = useContext(CheckContext);
     const [ordersColumn, setOrderColumns] = useState<{ key: string, orderColumn: Order }[]>([]);
 
@@ -64,7 +65,6 @@ export function TableHead({ columns, hasCheckboxes, stylesHeader, hasOrder, deaf
                     </TableCell>
                 ))}
             </TableRow>
-
         </HeadMui>
     )
 }

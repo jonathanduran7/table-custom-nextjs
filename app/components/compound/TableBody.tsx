@@ -6,12 +6,13 @@ import { getCellStyle } from "@/app/utils/cell.utils"
 import { getRowStyle } from "@/app/utils/row.utils"
 import { useContext, useEffect } from "react"
 import CheckContext from "@/app/context/checks/check-context"
+import { TableConfig } from "@/app/interface/table-config.interface"
 
 interface Props<T> {
     stylesRow?: IRow
     columns?: IColumn[]
     data?: Array<T & { id: number }>
-    hasCheckboxes?: boolean;
+    tableConfig?: Pick<TableConfig, 'hasCheckboxes'>
 }
 
 const RowCustom = styled(TableRow)(({ theme }) => ({
@@ -21,7 +22,8 @@ const RowCustom = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-export default function TableBody<T>({ columns, data, stylesRow, hasCheckboxes }: Props<T>) {
+export default function TableBody<T>({ columns, data, stylesRow, tableConfig }: Props<T>) {
+    const { hasCheckboxes } = tableConfig || { hasCheckboxes: false };
     const { initializeChecks, isItemChecked, handleCheck } = useContext(CheckContext);
 
     useEffect(() => {

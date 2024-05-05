@@ -6,14 +6,14 @@ import { TableHead } from "./TableHead"
 import React from "react"
 import { Table } from "@mui/material"
 import CheckProvider from "@/app/context/checks/check-provider"
+import { TableConfig } from "@/app/interface/table-config.interface"
 
 interface Props<T> {
     children: React.ReactNode
     columns: IColumn[]
     data: Array<T & { id: number }>
     tableOptions?: { stickyHeader?: boolean }
-    hasCheckboxes?: boolean;
-    hasOrder?: boolean;
+    tableConfig?: TableConfig
 }
 
 export default function TableCompound<T>({ children, tableOptions, ...restProps }: Props<T>) {

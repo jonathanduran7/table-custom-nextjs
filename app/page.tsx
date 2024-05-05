@@ -4,15 +4,21 @@ import { columns } from "./data/columns";
 import { data as fakeData } from "./data/data";
 import TableCompound from "./components/compound/Table";
 import { styleHeader, styleRow } from "./styles.table";
+import { TableConfig } from "./interface/table-config.interface";
 
 export default function Home() {
 
   const [data, setData] = useState(fakeData)
 
+  const tableConfig: TableConfig = {
+    hasCheckboxes: true,
+    hasOrder: true,
+  }
+  
   return (
     <main>
       <div style={{ minHeight: '200px' }}>
-        <TableCompound columns={columns} data={data} hasCheckboxes={true} hasOrder={true}>
+        <TableCompound columns={columns} data={data} tableConfig={tableConfig}>
           <TableCompound.Head stylesHeader={styleHeader} deafultOrder="asc" />
           <TableCompound.Body stylesRow={styleRow} />
         </TableCompound>
