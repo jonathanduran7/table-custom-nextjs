@@ -5,6 +5,7 @@ import { data as fakeData } from "./data/data";
 import TableCompound from "./components/compound/Table";
 import { styleHeader, styleRow } from "./styles.table";
 import { TableConfig } from "./interface/table-config.interface";
+import { fakeSortService } from "./services/fake-sort.service";
 
 export default function Home() {
 
@@ -15,10 +16,8 @@ export default function Home() {
     hasOrder: true,
   }
 
-  const handleOrderColumn = (keyColumn: string) => {
-    // here i can call api for order data
-    console.log(keyColumn);
-    return [{id: 1, nombre: 'jonathan'}]
+  const handleOrderColumn = async (keyColumn: string, order: 'asc' | 'desc') => {
+    return fakeSortService(keyColumn, order)
   }
 
   const ordersColumn = []
@@ -27,10 +26,10 @@ export default function Home() {
     <main>
       <div style={{ minHeight: '200px' }}>
         <TableCompound columns={columns} data={data} tableConfig={tableConfig}>
-          <TableCompound.Head 
-              stylesHeader={styleHeader} 
-              deafultOrder="asc" 
-              //customOrder={{handleOrderColumn}} 
+          <TableCompound.Head
+            stylesHeader={styleHeader}
+            deafultOrder="asc"
+            customOrder={{ handleOrderColumn }}
           />
           <TableCompound.Body stylesRow={styleRow} />
         </TableCompound>
