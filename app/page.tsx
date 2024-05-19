@@ -1,48 +1,36 @@
 'use client'
-import { useEffect, useState } from "react";
-import CustomTable from "./components/table/Table";
+import { useState } from "react";
 import { columns } from "./data/columns";
 import { data as fakeData } from "./data/data";
-import useChecks from "./hooks/useChecks";
 import TableCompound from "./components/compound/Table";
+import { styleHeader, styleRow } from "./styles.table";
+import { TableConfig } from "./interface/table-config.interface";
+import { fakeSortService } from "./services/fake-sort.service";
 
 export default function Home() {
 
   const [data, setData] = useState(fakeData)
-  // const { checks, handleCheck, handleCheckAll, isItemChecked, initializeChecks } = useChecks();
 
-  const styleRow = {
-    '&:hover': {
-      backgroundColor: '#eeeeee'
-    },
+  const tableConfig: TableConfig = {
+    hasCheckboxes: true,
+    hasOrder: true,
   }
 
-  const styleHeader = {
-    backgroundColor: '#dcdcdc',
-    color: '#000',
+  const handleOrderColumn = async (keyColumn: string, order: 'asc' | 'desc') => {
+    return fakeSortService(keyColumn, order)
   }
 
-  useEffect(() => {
-    // initializeChecks(data)
-  }, [data])
+  const ordersColumn = []
 
   return (
     <main>
-      <div
-        style={{ minHeight: '200px' }}
-      >
-        {/* <CustomTable
-          checkboxFunctions={{ isItemChecked, initializeChecks, checks, handleCheck, handleCheckAll}}
-          checkbox={true}
-          tableOptions={{ stickyHeader: true }}
-          stylesRow={styleRow}
-          stylesHeader={styleHeader}
-          columns={columns}
-          data={data}
-        /> */}
-
-        <TableCompound columns={columns} data={data} hasCheckboxes={true}>
-          <TableCompound.Head stylesHeader={styleHeader} />
+      <div style={{ minHeight: '200px' }}>
+        <TableCompound columns={columns} data={data} tableConfig={tableConfig}>
+          <TableCompound.Head
+            stylesHeader={styleHeader}
+            deafultOrder="asc"
+            customOrder={{ handleOrderColumn }}
+          />
           <TableCompound.Body stylesRow={styleRow} />
         </TableCompound>
       </div>
