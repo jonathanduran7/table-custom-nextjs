@@ -11,15 +11,25 @@ interface TableCompoundProps {
     stylesHeader?: IRow
     tableConfig?: TableConfig
     deafultOrder?: Order;
+    customOrder?: {
+        handleOrderColumn?: (key: string) => void
+        ordersColumn?: { key: string, orderColumn: Order }[]
+    }
 }
 
 type Order = 'asc' | 'desc';
 
-export function TableHead({ columns, stylesHeader, deafultOrder, tableConfig }: TableCompoundProps) {
+export function TableHead({ columns, stylesHeader, deafultOrder, customOrder, tableConfig }: TableCompoundProps) {
 
     const { hasCheckboxes, hasOrder } = tableConfig || { hasCheckboxes: false, hasOrder: false };
     const { handleCheckAll } = useContext(CheckContext);
-    const { handleOrderColumn, ordersColumn } = useTableContext()
+    const { handleOrderColumn, ordersColumn, getOrderColumn} = useTableContext()
+
+    const customHandleOrder = (keyColumn: string) => {
+      const orders = getOrderColumn(keyColumn);  
+      const response = customOrder.handleOrderColumn(keyColumn)
+      console.log('response', response)
+    }
 
     return (
         <HeadMui>
@@ -42,7 +52,11 @@ export function TableHead({ columns, stylesHeader, deafultOrder, tableConfig }: 
                         <TableSortLabel
                             active={hasOrder}
                             direction={ordersColumn.find(orderColumn => orderColumn.key === column.key)?.orderColumn || 'asc'}
-                            onClick={() => handleOrderColumn(column.key)}
+                            onClick={() =>
+                                customOrder?.handleOrderColumn
+                                    ? customHandleOrder(column.key)                                    
+                                    : handleOrderColumn(column.key)
+                            }
                         >
                             {column.title}
                         </TableSortLabel>
