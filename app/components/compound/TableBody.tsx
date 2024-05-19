@@ -55,7 +55,7 @@ export default function TableBody<T>({ columns, data, stylesRow, tableConfig, ac
             </TableCell>
           })}
           {hasActions && <TableCell>
-            {actions?.map(action => <IconButton key={action.label} onClick={action.action}>{action.icon}</IconButton>)}
+            {actions?.map(action => <IconButton key={action.label} onClick={() => action.action(row)}>{action.icon}</IconButton>)}
           </TableCell>}
         </RowCustom>
       ))}

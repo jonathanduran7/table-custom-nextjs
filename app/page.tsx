@@ -30,12 +30,12 @@ export default function Home() {
   const actions: IAction[] = [
     {
       label: 'Editar',
-      action: () => console.log('Edit action'),
+      action: (row) => console.log('Edit action', row.id),
       icon: <EditIcon />
     },
     {
       label: 'Eliminar',
-      action: () => console.log('Delete action'),
+      action: (row) => console.log('Delete action', row.id),
       icon: <DeleteIcon />
     }
   ]
