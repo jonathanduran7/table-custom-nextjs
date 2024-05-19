@@ -14,12 +14,24 @@ export default function Home() {
     hasCheckboxes: true,
     hasOrder: true,
   }
-  
+
+  const handleOrderColumn = (keyColumn: string) => {
+    // here i can call api for order data
+    console.log(keyColumn);
+    return [{id: 1, nombre: 'jonathan'}]
+  }
+
+  const ordersColumn = []
+
   return (
     <main>
       <div style={{ minHeight: '200px' }}>
         <TableCompound columns={columns} data={data} tableConfig={tableConfig}>
-          <TableCompound.Head stylesHeader={styleHeader} deafultOrder="asc" />
+          <TableCompound.Head 
+              stylesHeader={styleHeader} 
+              deafultOrder="asc" 
+              //customOrder={{handleOrderColumn}} 
+          />
           <TableCompound.Body stylesRow={styleRow} />
         </TableCompound>
       </div>
