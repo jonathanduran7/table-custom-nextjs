@@ -5,6 +5,7 @@ import { IRow } from "../table/Table";
 import CheckContext from "@/app/context/checks/check-context";
 import { TableConfig } from "@/app/interface/table-config.interface";
 import { useTableContext } from "@/app/hooks/useTableContext";
+import { styleHeader } from "@/app/styles.table";
 
 interface TableCompoundProps {
   columns?: IColumn[]
@@ -21,7 +22,7 @@ type Order = 'asc' | 'desc';
 
 export function TableHead({ columns, stylesHeader, deafultOrder, customOrder, tableConfig }: TableCompoundProps) {
 
-  const { hasCheckboxes, hasOrder } = tableConfig || { hasCheckboxes: false, hasOrder: false };
+  const { hasCheckboxes, hasOrder, hasActions } = tableConfig || { hasCheckboxes: false, hasOrder: false };
   const { handleCheckAll } = useContext(CheckContext);
   const { handleOrderColumn, ordersColumn, getOrderColumn, setData } = useTableContext()
 
@@ -62,6 +63,7 @@ export function TableHead({ columns, stylesHeader, deafultOrder, customOrder, ta
             </TableSortLabel>
           </TableCell>
         ))}
+        {hasActions && <TableCell sx={styleHeader}>Acciones</TableCell>}
       </TableRow>
     </HeadMui>
   )
