@@ -1,4 +1,5 @@
 export interface TableConfig {
-    hasCheckboxes?: boolean
-    hasOrder?: boolean
+  hasCheckboxes?: boolean
+  hasOrder?: boolean
+  hasActions?: boolean
 }
